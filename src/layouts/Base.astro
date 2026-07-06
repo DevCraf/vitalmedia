@@ -1,0 +1,96 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-sans text-white antialiased">
+    <slot />
+  </body>
+</html>
+
+<script>
+  function initInteractions() {
+    // Form submission handler
+    const form = document.getElementById('contactForm') as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+        if (!button) return;
+        const originalText = button.textContent ?? '';
+
+        button.textContent = 'Enviando...';
+        button.disabled = true;
+
+        setTimeout(() => {
+          button.textContent = 'Recibido — te contactamos en 24h';
+          button.classList.remove('from-v-red', 'to-v-purple');
+          button.classList.add('bg-green-500');
+
+          setTimeout(() => {
+            form.reset();
+            button.textContent = originalText;
+            button.classList.add('from-v-red', 'to-v-purple');
+            button.classList.remove('bg-green-500');
+            button.disabled = false;
+          }, 4000);
+        }, 1500);
+      });
+    }
+
+    // Scroll-spy for nav links
+    const sections = document.querySelectorAll<HTMLElement>('section[id]');
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');
+
+    if (sections.length && navLinks.length) {
+      const updateActive = () => {
+        let current = '';
+        sections.forEach((section) => {
+          const top = section.offsetTop;
+          if (window.pageYOffset >= top - 60) {
+            current = section.getAttribute('id') ?? '';
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove('text-white');
+          link.classList.add('text-gray-300');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('text-white');
+            link.classList.remove('text-gray-300');
+          }
+        });
+      };
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    }
+  }
+
+  initInteractions();
+  document.addEventListener('astro:page-load', initInteractions);
+</script>

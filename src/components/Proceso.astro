@@ -1,0 +1,56 @@
+---
+const phases = [
+  {
+    number: 'FASE 01',
+    title: 'Diagnóstico',
+    description: 'Auditoría digital, regulatoria y competitiva. Mapeamos tu ecosistema actual y definimos la línea base.',
+    color: 'v-blue',
+    border: 'hover:border-v-blue/50',
+  },
+  {
+    number: 'FASE 02',
+    title: 'Estrategia',
+    description: 'Roadmap omnichannel, arquitectura de contenido y plan de medios. Todo aprobado por tu comité médico.',
+    color: 'v-purple',
+    border: 'hover:border-v-purple/50',
+  },
+  {
+    number: 'FASE 03',
+    title: 'Ejecución',
+    description: 'Producción de contenido, campañas y automatización. Comité semanal de avance contigo.',
+    color: 'v-red',
+    border: 'hover:border-v-red/50',
+  },
+  {
+    number: 'FASE 04',
+    title: 'Optimización',
+    description: 'Iteración basada en datos, A/B testing continuo y reportes mensuales con insights accionables.',
+    color: 'v-bright',
+    border: 'hover:border-v-bright/50',
+  },
+];
+---
+
+<section id="proceso" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mb-16">
+      <span class="text-sm text-v-purple font-semibold uppercase tracking-widest">Proceso</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+        Cómo trabajamos — 4 fases, cero sorpresas.
+      </h2>
+      <p class="text-lg text-gray-400">
+        Un proceso claro, plazos definidos, y entregables medibles en cada fase. Sin cajas negras ni jargonitis.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {phases.map((phase) => (
+        <div class:list={["glass rounded-3xl p-8 border border-transparent transition-all", phase.border]}>
+          <div class:list={["text-sm font-bold tracking-widest mb-4", `text-${phase.color}`]}>{phase.number}</div>
+          <h3 class="font-display text-2xl font-bold mb-3">{phase.title}</h3>
+          <p class="text-gray-400 text-sm">{phase.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

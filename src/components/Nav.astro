@@ -1,0 +1,27 @@
+---
+const links = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-1.5 flex items-center justify-between">
+    <a href="#" class="block h-16 group" aria-label="Vitalmedia — Inicio">
+      <img src="/logo.svg" alt="Vitalmedia" class="h-full w-auto transition-opacity duration-300 group-hover:opacity-80" />
+    </a>
+    <div class="hidden md:flex items-center space-x-8 text-sm text-gray-300">
+      {links.map((link) => (
+        <a href={link.href} class="hover:text-white transition-colors">{link.label}</a>
+      ))}
+    </div>
+    <a
+      href="#contacto"
+      class="bg-gradient-to-r from-v-blue to-v-bright text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-v-blue/40 transition-all"
+    >
+      Quiero mi propuesta
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+---
+const sectors = [
+  'Farma',
+  'Prescription',
+  'Medical Devices',
+  'Healthtech',
+  'Aseguradoras / EPS',
+  'Hospitales & Clínicas',
+  'OTC & Consumer Health',
+  'Diagnóstica',
+  'Biotecnología',
+];
+---
+
+<section class="py-8 border-y border-white/5 glass overflow-hidden">
+  <div class="flex items-center">
+    <div class="flex animate-marquee whitespace-nowrap">
+      {[0, 1].map(() => (
+        <div class="flex items-center space-x-12 mx-6 text-gray-500 font-medium">
+          <span class="text-sm uppercase tracking-widest">Sectores que atendemos:</span>
+          {sectors.map((sector) => (
+            <>
+              <span>{sector}</span>
+              <span class="text-v-red">·</span>
+            </>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

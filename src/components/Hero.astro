@@ -1,0 +1,45 @@
+---
+const trust = ['+8 años en sector salud', 'Compliance Invima', 'Ley 1581/2012', 'Garantía primer mes'];
+---
+
+<header class="relative min-h-screen flex items-center pt-32 pb-20 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto w-full relative z-10">
+    <div class="flex flex-col items-start space-y-8 max-w-5xl">
+      <div class="flex items-center space-x-4 text-sm text-gray-400">
+        <span class="bg-v-purple/20 text-v-purple px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">Sector Salud</span>
+        <span>Bogotá · Colombia · Desde 2018</span>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+        Estrategia de Producción de Contenidos especializada en <span class="italic gradient-text">posicionamiento y ventas</span>.
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed">
+        Con más de 8 años de experiencia en el Sector Salud, generamos estrategias claras de marketing digital — sin contenidos de relleno — y conectamos el marketing con la estrategia comercial para convertir tu servicio en relaciones de negocio sostenibles.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 pt-4">
+        <a
+          href="#contacto"
+          class="bg-v-red hover:bg-v-red/80 text-white px-8 py-4 rounded-full font-semibold text-center transition-all hover:shadow-xl hover:shadow-v-red/30"
+        >
+          Quiero mi propuesta
+        </a>
+        <a
+          href="#servicios"
+          class="glass-strong hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-center transition-all"
+        >
+          Ver servicios
+        </a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-8 gap-y-2 pt-8 text-xs text-gray-400 tracking-wide uppercase">
+        {trust.map((item, i) => (
+          <>
+            <span>{item}</span>
+            {i < trust.length - 1 && <span class="w-1 h-1 bg-gray-600 rounded-full"></span>}
+          </>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-10 left-0 right-0 text-center text-xs text-gray-500 uppercase tracking-widest">
+    Marketing digital · Estrategia comercial · Cumplimiento regulatorio
+  </div>
+</header>

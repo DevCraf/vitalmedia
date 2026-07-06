@@ -1,0 +1,84 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Estrategia y posicionamiento',
+    description: 'Plan de marketing digital especializado en salud, basado en un diagnóstico inicial y un sistema de medición continua que conecta tu marca con los pacientes y clientes que la necesitan.',
+    items: [
+      'Diagnóstico inicial + auditoría digital',
+      'Roadmap omnichannel con foco comercial',
+      'Posicionamiento de marca y reputación',
+    ],
+    highlight: true,
+  },
+  {
+    title: 'Marketing de contenidos',
+    description: 'Producción editorial especializada en sector salud con comité médico asesor: redacción que informa, educa pacientes y construye confianza con tu audiencia.',
+    items: [
+      '· Redacción médica y científica',
+      '· Educación para pacientes + HCPs',
+      '· Contenido sin "relleno"',
+    ],
+  },
+  {
+    title: 'Generación de oportunidades comerciales',
+    description: 'Estrategia comercial que convierte el marketing digital en leads calificados: nutrimos, gestionamos el pipeline y abrimos conversaciones de negocio reales.',
+    items: [
+      '· Lead scoring y nurturing',
+      '· CRM (Veeva, Salesforce, HubSpot)',
+      '· Atribución HCP · paciente',
+    ],
+  },
+  {
+    title: 'Seguimiento y análisis',
+    description: 'Dashboards omnichannel y reportes claros que conectan cada acción con resultados de negocio — listos para tu equipo médico y financiero.',
+    items: [
+      '· Reportes mensuales accionables',
+      '· Marketing Mix Modeling',
+      '· Métricas que importan al CFO',
+    ],
+  },
+  {
+    title: 'Fortalecimiento comercial',
+    description: 'Acompañamiento al equipo de ventas para convertir las oportunidades generadas en alianzas y ventas de valor — cerrando el puente entre marketing y cuenta.',
+    items: [
+      '· Playbooks de venta consultiva',
+      '· Capacitación al equipo comercial',
+      '· Optimización del pipeline',
+    ],
+  },
+];
+
+const highlightStats = [
+  { value: '+47%', label: 'Engagement HCP' },
+  { value: '8.4x', label: 'ROAS' },
+  { value: '100%', label: 'Compliance' },
+];
+---
+
+<section id="servicios" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-3xl mb-16">
+      <span class="text-sm text-v-blue font-semibold uppercase tracking-widest">Servicios</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+        Estrategia y ejecución, conectados bajo un mismo modelo.
+      </h2>
+      <p class="text-lg text-gray-400">
+        No solo administramos tu comunicación digital: desarrollamos una estrategia integral que conecta el marketing digital con la gestión comercial para posicionar tu organización, atraer clientes potenciales, fortalecer tu reputación y generar oportunidades reales de negocio.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          items={service.items}
+          highlight={'highlight' in service ? !!service.highlight : false}
+          highlightStats={service.highlight ? highlightStats : undefined}
+        />
+      ))}
+    </div>
+  </div>
+</section>

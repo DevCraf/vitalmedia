@@ -3,11 +3,11 @@ const columns = [
   {
     title: 'Servicios',
     links: [
-      { label: 'SEO técnico farma', href: '#' },
-      { label: 'Social media salud', href: '#' },
-      { label: 'Contenido médico', href: '#' },
-      { label: 'Email + CRM', href: '#' },
-      { label: 'Audiovisual', href: '#' },
+      { label: 'Estrategia y posicionamiento', href: '#servicios' },
+      { label: 'Marketing de contenidos', href: '#servicios' },
+      { label: 'Generación de oportunidades', href: '#servicios' },
+      { label: 'Seguimiento y análisis', href: '#servicios' },
+      { label: 'Fortalecimiento comercial', href: '#servicios' },
     ],
   },
   {
@@ -23,25 +23,25 @@ const columns = [
 ];
 ---
 
-<footer class="pt-20 pb-10 px-6 border-t border-white/5">
+<footer class="pt-20 pb-10 px-6 border-t border-silver-light/60">
   <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
       <div class="md:col-span-1">
         <a href="#" class="block h-24 mb-6" aria-label="Vitalmedia">
           <img src="/logo.svg" alt="Vitalmedia" class="h-full w-auto" />
         </a>
-        <p class="text-sm text-gray-400">
+        <p class="text-sm text-graphite leading-relaxed">
           Estrategia de Producción de Contenidos especializada en posicionamiento y ventas para el sector salud en Colombia.
         </p>
       </div>
 
       {columns.map((col) => (
         <div>
-          <h4 class="font-semibold text-white mb-4 text-sm uppercase tracking-wider">{col.title}</h4>
-          <ul class="space-y-3 text-sm text-gray-400">
+          <h4 class="font-bold text-vital-blue mb-4 text-sm uppercase tracking-wider">{col.title}</h4>
+          <ul class="space-y-3 text-sm text-graphite">
             {col.links.map((link) => (
               <li>
-                <a href={link.href} class="hover:text-white transition-colors">{link.label}</a>
+                <a href={link.href} class="hover:text-v-blue transition-colors">{link.label}</a>
               </li>
             ))}
           </ul>
@@ -49,25 +49,25 @@ const columns = [
       ))}
 
       <div>
-        <h4 class="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Contacto</h4>
-        <ul class="space-y-3 text-sm text-gray-400">
-          <li>hola@vitalmedia.com</li>
-          <li>+57 (1) 234 5678</li>
+        <h4 class="font-bold text-vital-blue mb-4 text-sm uppercase tracking-wider">Contacto</h4>
+        <ul class="space-y-3 text-sm text-graphite">
+          <li><a href="mailto:hola@vitalmedia.com" class="hover:text-v-blue transition-colors">hola@vitalmedia.com</a></li>
+          <li><a href="tel:+5712345678" class="hover:text-v-blue transition-colors">+57 (1) 234 5678</a></li>
           <li>Bogotá, Colombia</li>
-          <li class="pt-2"><a href="#" class="hover:text-white transition-colors">LinkedIn</a> · <a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+          <li class="pt-2"><a href="#" class="hover:text-v-blue transition-colors">LinkedIn</a> · <a href="#" class="hover:text-v-blue transition-colors">Instagram</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-gray-500">
+    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-silver-light text-xs text-silver tracking-wide">
       <div class="mb-4 md:mb-0">
         © 2026 Vitalmedia. Todos los derechos reservados.
-        <span class="mx-2 text-gray-700">|</span>
+        <span class="mx-2">|</span>
         Compliance Invima · Ley 1581/2012
       </div>
       <div class="flex space-x-6">
-        <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
-        <a href="#" class="hover:text-white transition-colors">Términos</a>
+        <a href="#" class="hover:text-v-blue transition-colors">Política de Privacidad</a>
+        <a href="#" class="hover:text-v-blue transition-colors">Términos</a>
       </div>
     </div>
 

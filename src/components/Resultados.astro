@@ -7,14 +7,14 @@ const metrics = [
 ];
 ---
 
-<section id="resultados" class="py-24 px-6 border-t border-white/5">
+<section id="resultados" class="py-24 px-6 border-t border-silver-light/60">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-3xl mb-16">
       <span class="text-sm text-v-red font-semibold uppercase tracking-widest">Resultados</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight text-vital-blue">
         Lo que medimos cuando decimos "resultados".
       </h2>
-      <p class="text-lg text-gray-400">
+      <p class="text-lg text-graphite">
         Métricas que importan al CFO y al comité médico. No likes ni impressions sueltas.
       </p>
     </div>
@@ -23,7 +23,7 @@ const metrics = [
       {metrics.map((metric) => (
         <div class="glass p-8 rounded-3xl text-center">
           <div class="font-display text-5xl md:text-6xl font-bold gradient-text mb-3">{metric.value}</div>
-          <p class="text-gray-400 text-sm">{metric.label}</p>
+          <p class="text-graphite text-sm">{metric.label}</p>
         </div>
       ))}
     </div>

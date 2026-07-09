@@ -12,9 +12,9 @@ const links = [
     <a href="#" class="block h-16 group" aria-label="Vitalmedia — Inicio">
       <img src="/logo.svg" alt="Vitalmedia" class="h-full w-auto transition-opacity duration-300 group-hover:opacity-80" />
     </a>
-    <div class="hidden md:flex items-center space-x-8 text-sm text-gray-300">
+    <div class="hidden md:flex items-center space-x-8 text-sm text-graphite">
       {links.map((link) => (
-        <a href={link.href} class="hover:text-white transition-colors">{link.label}</a>
+        <a href={link.href} class="hover:text-vital-blue transition-colors font-medium">{link.label}</a>
       ))}
     </div>
     <a

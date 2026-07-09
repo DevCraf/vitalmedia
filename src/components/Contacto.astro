@@ -1,8 +1,8 @@
 ---
 const benefits = [
-  { text: 'Propuesta clara y personalizada en tu correo', color: 'bg-v-blue/20 text-v-blue' },
-  { text: 'Estrategia diseñada para tu servicio específico', color: 'bg-v-purple/20 text-v-purple' },
-  { text: 'Garantía: si el primer mes no te convence, no pagas', color: 'bg-v-red/20 text-v-red' },
+  { text: 'Propuesta clara y personalizada en tu correo', color: 'bg-v-blue/10 text-v-blue' },
+  { text: 'Estrategia diseñada para tu servicio específico', color: 'bg-v-purple/10 text-v-purple' },
+  { text: 'Garantía: si el primer mes no te convence, no pagas', color: 'bg-v-red/10 text-v-red' },
 ];
 
 const serviceOptions = [
@@ -15,21 +15,21 @@ const serviceOptions = [
 ];
 ---
 
-<section id="contacto" class="py-24 px-6 border-t border-white/5">
+<section id="contacto" class="py-24 px-6 border-t border-silver-light/60">
   <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
     <div>
       <span class="text-sm text-v-purple font-semibold uppercase tracking-widest">Empecemos</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight text-vital-blue">
         Recibe una propuesta clara enfocada en tu servicio.
       </h2>
-      <p class="text-lg text-gray-400 mb-8">
+      <p class="text-lg text-graphite mb-8 leading-relaxed">
         Llena el siguiente formulario y recibirás un correo electrónico con una propuesta clara enfocada en tu servicio. Sin slides de 80 páginas. Sin venta agresiva.
       </p>
       <ul class="space-y-4">
         {benefits.map((benefit) => (
-          <li class="flex items-center text-gray-300">
-            <span class:list={["w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm", benefit.color]}>✓</span>
-            {benefit.text}
+          <li class="flex items-center text-vital-blue">
+            <span class:list={["w-8 h-8 rounded-full flex items-center justify-center mr-4 text-sm font-bold", benefit.color]}>✓</span>
+            <span class="font-medium">{benefit.text}</span>
           </li>
         ))}
       </ul>
@@ -38,34 +38,38 @@ const serviceOptions = [
     <div class="glass-strong p-8 md:p-10 rounded-3xl">
       <form id="contactForm" class="space-y-5">
         <div>
-          <label class="block text-sm text-gray-400 mb-2">Nombre completo</label>
-          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-600" placeholder="Tu nombre" />
+          <label class="block text-sm font-medium text-vital-blue mb-2">Nombre completo</label>
+          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="Tu nombre" />
         </div>
         <div>
-          <label class="block text-sm text-gray-400 mb-2">Email corporativo</label>
-          <input type="email" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-600" placeholder="nombre@empresa.com" />
+          <label class="block text-sm font-medium text-vital-blue mb-2">Email corporativo</label>
+          <input type="email" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="nombre@empresa.com" />
         </div>
         <div>
-          <label class="block text-sm text-gray-400 mb-2">Organización / IPS</label>
-          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-600" placeholder="IPS, consultorio, clínica..." />
+          <label class="block text-sm font-medium text-vital-blue mb-2">Organización / IPS</label>
+          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="IPS, consultorio, clínica..." />
         </div>
         <div>
-          <label class="block text-sm text-gray-400 mb-2">¿Qué servicio te interesa?</label>
-          <select required class="input-field w-full px-4 py-3 rounded-xl text-white">
-            <option value="" disabled selected class="bg-v-deep">Selecciona una opción</option>
+          <label class="block text-sm font-medium text-vital-blue mb-2">¿Qué servicio te interesa?</label>
+          <select required class="input-field w-full px-4 py-3 rounded-xl">
+            <option value="" disabled selected>Selecciona una opción</option>
             {serviceOptions.map((opt) => (
-              <option class="bg-v-deep">{opt}</option>
+              <option>{opt}</option>
             ))}
           </select>
         </div>
         <div>
-          <label class="block text-sm text-gray-400 mb-2">Cuéntanos brevemente tu servicio</label>
-          <textarea rows="3" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-600 resize-none" placeholder="¿Qué tipo de servicio ofreces? ¿Qué objetivos tienes?"></textarea>
+          <label class="block text-sm font-medium text-vital-blue mb-2">Cuéntanos brevemente tu servicio</label>
+          <textarea rows="3" class="input-field w-full px-4 py-3 rounded-xl resize-none" placeholder="¿Qué tipo de servicio ofreces? ¿Qué objetivos tienes?"></textarea>
         </div>
-        <button type="submit" class="w-full bg-gradient-to-r from-v-red to-v-purple text-white py-4 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-v-purple/20 transition-all">
+        <button type="submit" class="w-full bg-gradient-to-r from-v-red to-v-purple text-white py-4 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-v-purple/30 transition-all">
           Quiero mi propuesta
         </button>
-        <p class="text-xs text-gray-500 text-center pt-2">Tus datos están protegidos bajo la Ley 1581/2012 de Colombia. No los compartimos con terceros. Garantía: si el primer mes no te convence, no pagas.</p>
+        <p class="text-xs text-silver text-center pt-2 leading-relaxed">
+          Tus datos están protegidos bajo la Ley 1581/2012 de Colombia. No los compartimos con terceros.
+          <br />
+          <span class="font-semibold text-v-red">Garantía: si el primer mes no te convence, no pagas.</span>
+        </p>
       </form>
     </div>
   </div>

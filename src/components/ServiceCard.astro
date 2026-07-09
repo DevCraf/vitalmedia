@@ -15,23 +15,23 @@ const { title, description, items, highlight = false, highlightStats } = Astro.p
     <div class="lg:col-span-2 lg:row-span-2 card-highlight rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative overflow-hidden group min-h-[400px]">
       <div class="absolute top-6 right-6 bg-v-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Most requested</div>
       <div>
-        <h3 class="font-display text-3xl font-bold mb-4">{title}</h3>
-        <p class="text-gray-300 mb-6 max-w-md">{description}</p>
-        <ul class="space-y-3 text-sm text-gray-400">
+        <h3 class="font-display text-3xl font-bold mb-4 text-vital-blue">{title}</h3>
+        <p class="text-graphite mb-6 max-w-md leading-relaxed">{description}</p>
+        <ul class="space-y-3 text-sm text-graphite/80">
           {items.map((item) => (
             <li class="flex items-start">
-              <span class="text-v-blue mr-3 mt-0.5">▸</span>
+              <span class="text-v-blue mr-3 mt-0.5 font-bold">▸</span>
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
       {highlightStats && (
-        <div class="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/10">
+        <div class="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-v-blue/20">
           {highlightStats.map((stat) => (
             <div>
               <div class="text-3xl font-bold gradient-text">{stat.value}</div>
-              <div class="text-xs text-gray-500 uppercase mt-1">{stat.label}</div>
+              <div class="text-xs text-silver uppercase mt-1 font-semibold tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -39,9 +39,9 @@ const { title, description, items, highlight = false, highlightStats } = Astro.p
     </div>
   ) : (
     <div class="glass rounded-3xl p-8 card-glow transition-all duration-300">
-      <h3 class="font-display text-xl font-bold mb-3">{title}</h3>
-      <p class="text-gray-400 text-sm mb-6">{description}</p>
-      <ul class="space-y-2 text-xs text-gray-500">
+      <h3 class="font-display text-xl font-bold mb-3 text-vital-blue">{title}</h3>
+      <p class="text-graphite text-sm mb-6 leading-relaxed">{description}</p>
+      <ul class="space-y-2 text-xs text-silver">
         {items.map((item) => <li>{item}</li>)}
       </ul>
     </div>

@@ -12,12 +12,12 @@ const sectors = [
 ];
 ---
 
-<section class="py-8 border-y border-white/5 glass overflow-hidden">
+<section class="py-8 border-y border-silver-light/60 bg-paper-gray/60 overflow-hidden">
   <div class="flex items-center">
     <div class="flex animate-marquee whitespace-nowrap">
       {[0, 1].map(() => (
-        <div class="flex items-center space-x-12 mx-6 text-gray-500 font-medium">
-          <span class="text-sm uppercase tracking-widest">Sectores que atendemos:</span>
+        <div class="flex items-center space-x-12 mx-6 text-silver font-medium">
+          <span class="text-sm uppercase tracking-widest font-semibold text-vital-blue">Sectores que atendemos:</span>
           {sectors.map((sector) => (
             <>
               <span>{sector}</span>

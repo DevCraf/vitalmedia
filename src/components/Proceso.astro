@@ -31,14 +31,14 @@ const phases = [
 ];
 ---
 
-<section id="proceso" class="py-24 px-6 border-t border-white/5">
+<section id="proceso" class="py-24 px-6 border-t border-silver-light/60">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-3xl mb-16">
       <span class="text-sm text-v-purple font-semibold uppercase tracking-widest">Proceso</span>
-      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight text-vital-blue">
         Cómo trabajamos — 4 fases, cero sorpresas.
       </h2>
-      <p class="text-lg text-gray-400">
+      <p class="text-lg text-graphite">
         Un proceso claro, plazos definidos, y entregables medibles en cada fase. Sin cajas negras ni jargonitis.
       </p>
     </div>
@@ -47,8 +47,8 @@ const phases = [
       {phases.map((phase) => (
         <div class:list={["glass rounded-3xl p-8 border border-transparent transition-all", phase.border]}>
           <div class:list={["text-sm font-bold tracking-widest mb-4", `text-${phase.color}`]}>{phase.number}</div>
-          <h3 class="font-display text-2xl font-bold mb-3">{phase.title}</h3>
-          <p class="text-gray-400 text-sm">{phase.description}</p>
+          <h3 class="font-display text-2xl font-bold mb-3 text-vital-blue">{phase.title}</h3>
+          <p class="text-graphite text-sm">{phase.description}</p>
         </div>
       ))}
     </div>

@@ -8,6 +8,16 @@
   --color-v-indigo: #03028E;
   --color-v-bright: #001AFF;
 
+  --color-bone-white: #FAFAF7;
+  --color-paper-gray: #F4F4F1;
+  --color-ink: #0A2540;
+  --color-graphite: #4A4A4A;
+  --color-silver: #6B7280;
+  --color-silver-light: #E5E5E0;
+  --color-vital-tint: #E8F4F8;
+  --color-teal-tint: #D6F5F1;
+  --color-coral-tint: #FFE5E5;
+
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
 }
@@ -18,32 +28,37 @@
   }
 
   body {
-    background-color: #030014;
+    background-color: var(--color-bone-white);
     background-image:
-      radial-gradient(circle at 15% 50%, rgba(7, 87, 254, 0.15) 0%, transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(187, 37, 232, 0.15) 0%, transparent 25%),
-      radial-gradient(circle at 50% 80%, rgba(255, 32, 33, 0.1) 0%, transparent 30%);
+      radial-gradient(circle at 15% 50%, rgba(7, 87, 254, 0.07) 0%, transparent 30%),
+      radial-gradient(circle at 85% 30%, rgba(187, 37, 232, 0.07) 0%, transparent 30%),
+      radial-gradient(circle at 50% 80%, rgba(255, 32, 33, 0.04) 0%, transparent 35%);
+    color: var(--color-ink);
   }
 
   ::selection {
-    background-color: rgba(187, 37, 232, 0.5);
+    background-color: rgba(187, 37, 232, 0.35);
+    color: white;
   }
 }
 
 @layer utilities {
+  /* Glass surface — light variant */
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(10, 37, 64, 0.08);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(10, 37, 64, 0.1);
+    box-shadow: 0 4px 16px rgba(10, 37, 64, 0.04);
   }
 
+  /* Brand gradient text — works on both light & dark */
   .gradient-text {
     background: linear-gradient(135deg, #0757FE 0%, #BB25E8 100%);
     -webkit-background-clip: text;
@@ -55,15 +70,17 @@
     background: linear-gradient(135deg, #001676 0%, #03028E 100%);
   }
 
+  /* Card hover glow */
   .card-glow:hover {
-    box-shadow: 0 0 30px rgba(7, 87, 254, 0.3);
-    border-color: rgba(7, 87, 254, 0.5);
+    box-shadow: 0 12px 36px rgba(7, 87, 254, 0.18);
+    border-color: rgba(7, 87, 254, 0.35);
     transform: translateY(-5px);
   }
 
+  /* Featured service card — light variant */
   .card-highlight {
-    background: linear-gradient(135deg, rgba(0, 26, 255, 0.2) 0%, rgba(187, 37, 232, 0.1) 100%);
-    border: 1px solid rgba(7, 87, 254, 0.4);
+    background: linear-gradient(135deg, rgba(0, 26, 255, 0.06) 0%, rgba(187, 37, 232, 0.04) 100%);
+    border: 1px solid rgba(7, 87, 254, 0.25);
   }
 
   /* Marquee */
@@ -75,36 +92,40 @@
     animation: scroll-x 30s linear infinite;
   }
 
-  /* Form Input */
+  /* Form input — light variant */
   .input-field {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    color: var(--color-ink);
     transition: all 0.3s ease;
+  }
+  .input-field::placeholder {
+    color: #9CA3AF;
   }
   .input-field:focus {
     border-color: #0757FE;
-    box-shadow: 0 0 0 3px rgba(7, 87, 254, 0.2);
+    box-shadow: 0 0 0 3px rgba(7, 87, 254, 0.15);
     outline: none;
-    background: rgba(255, 255, 255, 0.05);
+    background: #FFFFFF;
   }
 
-  /* Mega Footer Hover */
+  /* Mega footer outlined text — light variant */
   .mega-footer-text {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    -webkit-text-stroke: 1px rgba(10, 37, 64, 0.12);
     transition: all 0.5s ease;
   }
   .mega-footer-text:hover {
-    background: linear-gradient(90deg, #FFFFFF 0%, #0757FE 50%, #FF2021 100%);
+    background: linear-gradient(90deg, #0A2540 0%, #0757FE 50%, #FF2021 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0;
   }
 
-  /* Scrollbar */
+  /* Scrollbar — light variant */
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #030014; }
-  ::-webkit-scrollbar-thumb { background: #03028E; border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: #FAFAF7; }
+  ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
   ::-webkit-scrollbar-thumb:hover { background: #0757FE; }
 }

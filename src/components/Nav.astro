@@ -1,4 +1,6 @@
 ---
+import DarkModeToggle from './DarkModeToggle.astro';
+
 const links = [
   { href: '#servicios', label: 'Servicios' },
   { href: '#proceso', label: 'Proceso' },
@@ -17,11 +19,14 @@ const links = [
         <a href={link.href} class="hover:text-vital-blue transition-colors font-medium">{link.label}</a>
       ))}
     </div>
-    <a
-      href="#contacto"
-      class="bg-gradient-to-r from-v-blue to-v-bright text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-v-blue/40 transition-all"
-    >
-      Quiero mi propuesta
-    </a>
+    <div class="flex items-center gap-2">
+      <DarkModeToggle />
+      <a
+        href="#contacto"
+        class="bg-gradient-to-r from-v-blue to-v-bright text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-v-blue/40 transition-all"
+      >
+        Quiero mi propuesta
+      </a>
+    </div>
   </div>
 </nav>

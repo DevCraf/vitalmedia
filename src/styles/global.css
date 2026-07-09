@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
+/* Custom dark variant via class on <html> (or any ancestor) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  /* Brand */
   --color-v-red: #FF2021;
   --color-v-blue: #0757FE;
   --color-v-deep: #001676;
@@ -8,6 +12,7 @@
   --color-v-indigo: #03028E;
   --color-v-bright: #001AFF;
 
+  /* Surface (light default — overrides in .dark below) */
   --color-bone-white: #FAFAF7;
   --color-paper-gray: #F4F4F1;
   --color-ink: #0A2540;
@@ -29,11 +34,32 @@
 
   body {
     background-color: var(--color-bone-white);
+    color: var(--color-ink);
     background-image:
       radial-gradient(circle at 15% 50%, rgba(7, 87, 254, 0.07) 0%, transparent 30%),
       radial-gradient(circle at 85% 30%, rgba(187, 37, 232, 0.07) 0%, transparent 30%),
       radial-gradient(circle at 50% 80%, rgba(255, 32, 33, 0.04) 0%, transparent 35%);
-    color: var(--color-ink);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark mode token swaps */
+  .dark {
+    --color-bone-white: #0A0A14;
+    --color-paper-gray: #14141F;
+    --color-ink: #F4F4F1;
+    --color-graphite: #B8BFC9;
+    --color-silver: #8A8F99;
+    --color-silver-light: #2A3441;
+    --color-vital-tint: rgba(0, 184, 169, 0.08);
+    --color-teal-tint: rgba(0, 184, 169, 0.18);
+    --color-coral-tint: rgba(255, 107, 107, 0.15);
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(7, 87, 254, 0.20) 0%, transparent 30%),
+      radial-gradient(circle at 85% 30%, rgba(187, 37, 232, 0.18) 0%, transparent 30%),
+      radial-gradient(circle at 50% 80%, rgba(255, 32, 33, 0.12) 0%, transparent 35%);
   }
 
   ::selection {
@@ -43,12 +69,17 @@
 }
 
 @layer utilities {
-  /* Glass surface — light variant */
+  /* Glass surfaces — adapt to theme */
   .glass {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(10, 37, 64, 0.08);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   .glass-strong {
@@ -56,9 +87,15 @@
     backdrop-filter: blur(24px);
     border: 1px solid rgba(10, 37, 64, 0.1);
     box-shadow: 0 4px 16px rgba(10, 37, 64, 0.04);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .dark .glass-strong {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
   }
 
-  /* Brand gradient text — works on both light & dark */
+  /* Brand gradient text — works both themes */
   .gradient-text {
     background: linear-gradient(135deg, #0757FE 0%, #BB25E8 100%);
     -webkit-background-clip: text;
@@ -70,17 +107,24 @@
     background: linear-gradient(135deg, #001676 0%, #03028E 100%);
   }
 
-  /* Card hover glow */
   .card-glow:hover {
     box-shadow: 0 12px 36px rgba(7, 87, 254, 0.18);
     border-color: rgba(7, 87, 254, 0.35);
     transform: translateY(-5px);
   }
+  .dark .card-glow:hover {
+    box-shadow: 0 0 30px rgba(7, 87, 254, 0.3);
+    border-color: rgba(7, 87, 254, 0.5);
+  }
 
-  /* Featured service card — light variant */
+  /* Featured service card — both themes */
   .card-highlight {
     background: linear-gradient(135deg, rgba(0, 26, 255, 0.06) 0%, rgba(187, 37, 232, 0.04) 100%);
     border: 1px solid rgba(7, 87, 254, 0.25);
+  }
+  .dark .card-highlight {
+    background: linear-gradient(135deg, rgba(0, 26, 255, 0.20) 0%, rgba(187, 37, 232, 0.10) 100%);
+    border: 1px solid rgba(7, 87, 254, 0.4);
   }
 
   /* Marquee */
@@ -92,7 +136,7 @@
     animation: scroll-x 30s linear infinite;
   }
 
-  /* Form input — light variant */
+  /* Form input */
   .input-field {
     background: #FFFFFF;
     border: 1px solid #D1D5DB;
@@ -108,12 +152,24 @@
     outline: none;
     background: #FFFFFF;
   }
+  .dark .input-field {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #F4F4F1;
+  }
+  .dark .input-field:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #0757FE;
+  }
 
-  /* Mega footer outlined text — light variant */
+  /* Mega footer outlined text */
   .mega-footer-text {
     color: transparent;
     -webkit-text-stroke: 1px rgba(10, 37, 64, 0.12);
     transition: all 0.5s ease;
+  }
+  .dark .mega-footer-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.10);
   }
   .mega-footer-text:hover {
     background: linear-gradient(90deg, #0A2540 0%, #0757FE 50%, #FF2021 100%);
@@ -122,10 +178,20 @@
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 0;
   }
+  .dark .mega-footer-text:hover {
+    background: linear-gradient(90deg, #FFFFFF 0%, #0757FE 50%, #FF2021 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0;
+  }
 
-  /* Scrollbar — light variant */
+  /* Scrollbar — theme-aware */
   ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #FAFAF7; }
+  ::-webkit-scrollbar-track { background: var(--color-bone-white); }
   ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
   ::-webkit-scrollbar-thumb:hover { background: #0757FE; }
+  .dark ::-webkit-scrollbar-track { background: #0A0A14; }
+  .dark ::-webkit-scrollbar-thumb { background: #1F2937; }
+  .dark ::-webkit-scrollbar-thumb:hover { background: #0757FE; }
 }

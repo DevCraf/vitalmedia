@@ -41,9 +41,11 @@ const { title, description, items, highlight = false, highlightStats } = Astro.p
     <div class="glass rounded-3xl p-8 card-glow transition-all duration-300">
       <h3 class="font-display text-xl font-bold mb-3 text-vital-blue">{title}</h3>
       <p class="text-graphite text-sm mb-6 leading-relaxed">{description}</p>
-      <ul class="space-y-2 text-xs text-silver">
-        {items.map((item) => <li>{item}</li>)}
-      </ul>
+      {items.length > 0 && (
+        <ul class="space-y-2 text-xs text-silver">
+          {items.map((item) => <li>{item}</li>)}
+        </ul>
+      )}
     </div>
   )
 }

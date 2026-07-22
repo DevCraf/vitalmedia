@@ -7,7 +7,7 @@ const services = [
     description: 'Plan de marketing digital especializado en salud, basado en un diagnóstico inicial y un sistema de medición continua que conecta tu marca con los pacientes y clientes que la necesitan.',
     items: [
       'Diagnóstico inicial + auditoría digital',
-      'Roadmap omnichannel con foco comercial',
+      'Estrategia con foco comercial',
       'Posicionamiento de marca y reputación',
     ],
     highlight: true,
@@ -17,22 +17,18 @@ const services = [
     description: 'Producción editorial especializada en sector salud con comité médico asesor: redacción que informa, educa pacientes y construye confianza con tu audiencia.',
     items: [
       '· Redacción médica y científica',
-      '· Educación para pacientes + HCPs',
+      '· Educación para pacientes',
       '· Contenido sin "relleno"',
     ],
   },
   {
     title: 'Generación de oportunidades comerciales',
-    description: 'Estrategia comercial que convierte el marketing digital en leads calificados: nutrimos, gestionamos el pipeline y abrimos conversaciones de negocio reales.',
-    items: [
-      '· Lead scoring y nurturing',
-      '· CRM (Veeva, Salesforce, HubSpot)',
-      '· Atribución HCP · paciente',
-    ],
+    description: 'Estrategia comercial que convierte el marketing digital en leads calificados: nutrimos y abrimos conversaciones de negocio reales.',
+    items: [],
   },
   {
     title: 'Seguimiento y análisis',
-    description: 'Dashboards omnichannel y reportes claros que conectan cada acción con resultados de negocio — listos para tu equipo médico y financiero.',
+    description: 'Reportes claros que conectan cada acción con resultados de negocio — listos para tu equipo médico y financiero.',
     items: [
       '· Reportes mensuales accionables',
       '· Marketing Mix Modeling',
@@ -48,12 +44,6 @@ const services = [
       '· Optimización del pipeline',
     ],
   },
-];
-
-const highlightStats = [
-  { value: '+47%', label: 'Engagement HCP' },
-  { value: '8.4x', label: 'ROAS' },
-  { value: '100%', label: 'Compliance' },
 ];
 ---
 
@@ -76,7 +66,6 @@ const highlightStats = [
           description={service.description}
           items={service.items}
           highlight={'highlight' in service ? !!service.highlight : false}
-          highlightStats={service.highlight ? highlightStats : undefined}
         />
       ))}
     </div>

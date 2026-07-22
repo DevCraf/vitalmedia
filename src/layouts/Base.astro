@@ -45,34 +45,6 @@ const { title, description } = Astro.props;
 
 <script>
   function initInteractions() {
-    // Form submission handler
-    const form = document.getElementById('contactForm') as HTMLFormElement | null;
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const button = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-        if (!button) return;
-        const originalText = button.textContent ?? '';
-
-        button.textContent = 'Enviando...';
-        button.disabled = true;
-
-        setTimeout(() => {
-          button.textContent = 'Recibido — te contactamos en 24h';
-          button.classList.remove('from-v-red', 'to-v-purple');
-          button.classList.add('bg-green-500');
-
-          setTimeout(() => {
-            form.reset();
-            button.textContent = originalText;
-            button.classList.add('from-v-red', 'to-v-purple');
-            button.classList.remove('bg-green-500');
-            button.disabled = false;
-          }, 4000);
-        }, 1500);
-      });
-    }
-
     // Scroll-spy for nav links
     const sections = document.querySelectorAll<HTMLElement>('section[id]');
     const navLinks = document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]');

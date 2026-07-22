@@ -1,15 +1,9 @@
 ---
-const metrics = [
-  { value: '+47%', label: 'Engagement promedio en campañas de awareness sector salud' },
-  { value: '8.4x', label: 'ROAS en campañas digitales para dispositivos y servicios' },
-  { value: '312', label: 'Oportunidades comerciales calificadas por trimestre' },
-  { value: '100%', label: 'Cumplimiento regulatorio en todas las entregas auditadas' },
-];
 ---
 
 <section id="resultados" class="py-24 px-6 border-t border-silver-light/60">
   <div class="max-w-7xl mx-auto">
-    <div class="max-w-3xl mb-16">
+    <div class="max-w-3xl mb-2">
       <span class="text-sm text-v-red font-semibold uppercase tracking-widest">Resultados</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight text-vital-blue">
         Lo que medimos cuando decimos "resultados".
@@ -17,15 +11,6 @@ const metrics = [
       <p class="text-lg text-graphite">
         Métricas que importan al CFO y al comité médico. No likes ni impressions sueltas.
       </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {metrics.map((metric) => (
-        <div class="glass p-8 rounded-3xl text-center">
-          <div class="font-display text-5xl md:text-6xl font-bold gradient-text mb-3">{metric.value}</div>
-          <p class="text-graphite text-sm">{metric.label}</p>
-        </div>
-      ))}
     </div>
   </div>
 </section>

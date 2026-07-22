@@ -13,6 +13,8 @@ const serviceOptions = [
   'Fortalecimiento comercial',
   'Otro / No estoy seguro',
 ];
+
+const formAction = 'https://formsubmit.co/danielcamilo@vitalmedia.com.co';
 ---
 
 <section id="contacto" class="py-24 px-6 border-t border-silver-light/60">
@@ -36,22 +38,27 @@ const serviceOptions = [
     </div>
 
     <div class="glass-strong p-8 md:p-10 rounded-3xl">
-      <form id="contactForm" class="space-y-5">
+      <form id="contactForm" class="space-y-5" action={formAction} method="POST">
+        <input type="hidden" name="_subject" value="Nueva propuesta desde Vitalmedia" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://vitalmedia.com/gracias" />
+
         <div>
-          <label class="block text-sm font-medium text-vital-blue mb-2">Nombre completo</label>
-          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="Tu nombre" />
+          <label for="nombre" class="block text-sm font-medium text-vital-blue mb-2">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="Tu nombre" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-vital-blue mb-2">Email corporativo</label>
-          <input type="email" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="nombre@empresa.com" />
+          <label for="email" class="block text-sm font-medium text-vital-blue mb-2">Email corporativo</label>
+          <input type="email" id="email" name="email" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="nombre@empresa.com" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-vital-blue mb-2">Organización / IPS</label>
-          <input type="text" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="IPS, consultorio, clínica..." />
+          <label for="organizacion" class="block text-sm font-medium text-vital-blue mb-2">Organización / IPS</label>
+          <input type="text" id="organizacion" name="organizacion" required class="input-field w-full px-4 py-3 rounded-xl" placeholder="IPS, consultorio, clínica..." />
         </div>
         <div>
-          <label class="block text-sm font-medium text-vital-blue mb-2">¿Qué servicio te interesa?</label>
-          <select required class="input-field w-full px-4 py-3 rounded-xl">
+          <label for="servicio" class="block text-sm font-medium text-vital-blue mb-2">¿Qué servicio te interesa?</label>
+          <select id="servicio" name="servicio" required class="input-field w-full px-4 py-3 rounded-xl">
             <option value="" disabled selected>Selecciona una opción</option>
             {serviceOptions.map((opt) => (
               <option>{opt}</option>
@@ -59,12 +66,16 @@ const serviceOptions = [
           </select>
         </div>
         <div>
-          <label class="block text-sm font-medium text-vital-blue mb-2">Cuéntanos brevemente tu servicio</label>
-          <textarea rows="3" class="input-field w-full px-4 py-3 rounded-xl resize-none" placeholder="¿Qué tipo de servicio ofreces? ¿Qué objetivos tienes?"></textarea>
+          <label for="mensaje" class="block text-sm font-medium text-vital-blue mb-2">Cuéntanos brevemente tu servicio</label>
+          <textarea id="mensaje" name="mensaje" rows="3" class="input-field w-full px-4 py-3 rounded-xl resize-none" placeholder="¿Qué tipo de servicio ofreces? ¿Qué objetivos tienes?"></textarea>
         </div>
-        <button type="submit" class="w-full bg-gradient-to-r from-v-red to-v-purple text-white py-4 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-v-purple/30 transition-all">
+
+        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-v-red to-v-purple text-white py-4 rounded-xl font-semibold text-lg hover:shadow-xl hover:shadow-v-purple/30 transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer">
           Quiero mi propuesta
         </button>
+
+        <p id="formStatus" class="text-xs text-center pt-2 leading-relaxed" aria-live="polite"></p>
+
         <p class="text-xs text-silver text-center pt-2 leading-relaxed">
           Tus datos están protegidos bajo la Ley 1581/2012 de Colombia. No los compartimos con terceros.
           <br />
@@ -74,3 +85,61 @@ const serviceOptions = [
     </div>
   </div>
 </section>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById('contactForm') as HTMLFormElement | null;
+    if (!form) return;
+    if (form.dataset.bound === '1') return;
+    form.dataset.bound = '1';
+
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn || !formStatus) return;
+
+      const data = new FormData(form);
+
+      const originalLabel = submitBtn.textContent ?? '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      formStatus.textContent = '';
+      formStatus.className = 'text-xs text-graphite text-center pt-2';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+
+        if (res.ok) {
+          submitBtn.textContent = 'Recibido — te contactamos en 24h';
+          submitBtn.classList.remove('from-v-red', 'to-v-purple');
+          submitBtn.classList.add('bg-green-500');
+          formStatus.textContent = 'Te enviamos un correo de confirmación. Revisa tu bandeja.';
+          formStatus.className = 'text-xs text-care-teal text-center pt-2 font-medium';
+          form.reset();
+          setTimeout(() => {
+            submitBtn.textContent = originalLabel;
+            submitBtn.classList.add('from-v-red', 'to-v-purple');
+            submitBtn.classList.remove('bg-green-500');
+            submitBtn.disabled = false;
+          }, 5000);
+        } else {
+          throw new Error(`HTTP ${res.status}`);
+        }
+      } catch (err) {
+        submitBtn.textContent = originalLabel;
+        submitBtn.disabled = false;
+        formStatus.textContent = 'No pudimos enviar el mensaje. Intenta de nuevo o escríbenos a hola@vitalmedia.com.';
+        formStatus.className = 'text-xs text-pulse-coral text-center pt-2 font-medium';
+      }
+    });
+  }
+
+  initContactForm();
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

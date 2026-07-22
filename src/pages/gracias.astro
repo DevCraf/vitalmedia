@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Gracias — Recibimos tu solicitud | Vitalmedia';
+const description =
+  'Gracias por contactarte con Vitalmedia. Te enviamos un correo de confirmación y recibirás tu propuesta personalizada en menos de 24 horas.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main
+    id="main"
+    class="relative min-h-screen flex items-center pt-32 pb-24 px-6 overflow-hidden"
+  >
+    <!-- Background -->
+    <div
+      class="absolute inset-0 -z-10"
+      style="background: radial-gradient(circle at 30% 30%, rgba(7, 87, 254, 0.08) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(187, 37, 232, 0.08) 0%, transparent 50%);"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <!-- Success mark -->
+      <div
+        class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-v-blue to-v-purple text-white mb-8 shadow-vital-lg"
+        aria-hidden="true"
+      >
+        <svg
+          width="36"
+          height="36"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <span class="block eyebrow-editorial text-care-teal mb-6">Confirmación</span>
+
+      <h1
+        class="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight text-vital-blue mb-8"
+      >
+        ¡Gracias!
+        <span class="italic gradient-text block mt-2">Recibimos tu solicitud.</span>
+      </h1>
+
+      <p
+        class="text-lg md:text-xl text-graphite leading-relaxed mb-12 max-w-2xl mx-auto"
+      >
+        Te enviamos un correo de confirmación. En menos de <span
+          class="font-bold text-vital-blue">24 horas</span
+        > recibirás una propuesta clara y personalizada, enfocada en tu servicio.
+      </p>
+
+      <!-- Next steps card -->
+      <div class="glass-strong rounded-3xl p-8 md:p-10 text-left max-w-2xl mx-auto">
+        <h2 class="font-display text-2xl font-bold text-vital-blue mb-6">
+          Próximos pasos
+        </h2>
+        <ol class="space-y-5 text-graphite">
+          <li class="flex items-start gap-4">
+            <span
+              class="w-8 h-8 flex-shrink-0 rounded-full bg-v-blue/10 text-v-blue grid place-items-center font-bold text-sm"
+              >1</span
+            >
+            <span class="pt-1">
+              Revisá tu bandeja de entrada (y la carpeta de spam por si acaso).
+            </span>
+          </li>
+          <li class="flex items-start gap-4">
+            <span
+              class="w-8 h-8 flex-shrink-0 rounded-full bg-v-purple/10 text-v-purple grid place-items-center font-bold text-sm"
+              >2</span
+            >
+            <span class="pt-1">
+              Recibirás una llamada de diagnóstico sin compromiso en menos de 24h.
+            </span>
+          </li>
+          <li class="flex items-start gap-4">
+            <span
+              class="w-8 h-8 flex-shrink-0 rounded-full bg-v-red/10 text-v-red grid place-items-center font-bold text-sm"
+              >3</span
+            >
+            <span class="pt-1"
+              >Si en 24h no recibes nada, escribinos a
+              <a
+                href="mailto:hola@vitalmedia.com.co"
+                class="text-v-blue font-semibold hover:underline"
+                >hola@vitalmedia.com.co</a
+              >.</span
+            >
+          </li>
+        </ol>
+
+        <div
+          class="mt-6 pt-5 border-t border-silver-light text-sm flex items-start gap-2"
+        >
+          <span class="font-semibold text-v-red flex-shrink-0">Garantía:</span>
+          <span class="text-graphite">
+            Si el primer mes no te convence el servicio, no pagas nuestra
+            asesoría.
+          </span>
+        </div>
+      </div>
+
+      <!-- Back to home -->
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 mt-12 text-vital-blue hover:text-v-blue font-semibold transition-colors"
+      >
+        <span aria-hidden="true">←</span>
+        Volver al inicio
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Base>

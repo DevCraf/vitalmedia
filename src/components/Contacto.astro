@@ -42,8 +42,7 @@ const formAction = 'https://formsubmit.co/danielcamilo@vitalmedia.com.co';
         <input type="hidden" name="_subject" value="Nueva propuesta desde Vitalmedia" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
-        <!-- _next omitted on purpose: rely on JS success state, and FormSubmit's
-             default thank-you page as fallback (instead of a 404 placeholder). -->
+        <input type="hidden" name="_next" value="https://vitalmedia.com.co/gracias" />
 
         <div>
           <label for="nombre" class="block text-sm font-medium text-vital-blue mb-2">Nombre completo</label>
